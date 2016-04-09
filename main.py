@@ -43,7 +43,7 @@ def main():
         settings = SettingsGUI(settings).main_routine()
 
     # Run Main Routine to start the bot
-    mybot = MyBot(plugins, settings["command_char"], settings["nick"], settings["oauth"], settings["stream"])
+    mybot = MyBot(plugins, settings["command_char"], settings["nick"], settings["oauth"], settings["stream"], settings["post_on_join"])
     t = threading.Thread(target = mybot.main_routine)
     t.daemon = True
     t.start()

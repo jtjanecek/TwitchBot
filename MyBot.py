@@ -8,7 +8,7 @@ import threading
 
 
 class MyBot():
-    def __init__(self, plugins, command_character, nick, oauth, stream_to_watch):
+    def __init__(self, plugins, command_character, nick, oauth, stream_to_watch, post_on_join):
         ''' Initializes the socket and the Bot
         '''
         self._command_char = command_character
@@ -18,6 +18,7 @@ class MyBot():
         self._nick = nick
         self._pass = oauth
         self._stream_to_watch = stream_to_watch
+        self._post_on_join = post_on_join
         self._plugins = plugins
 
         self._gui = BotGUI()
@@ -58,7 +59,9 @@ class MyBot():
             buf = self._socket.recv(self._bytes_to_read).decode()
         self.log("Ready.")
         self.log("Starting bot...")
-        self.send_msg(self._nick + " has joined the channel. Type " + self._command_char + "commands for a list of commands.")
+
+        if self._post_on_join == "1":
+            self.send_msg(self._nick + " has joined the channel. Type " + self._command_char + "commands for a list of commands.")
     
 
 
