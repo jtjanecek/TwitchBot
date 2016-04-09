@@ -39,8 +39,7 @@ def main():
     settings = read_config()
     plugins = initialize_plugins()
     
-    if (settings["settings_gui"] == "1"):
-        settings = SettingsGUI(settings).main_routine()
+    settings = SettingsGUI(settings).main_routine()
 
     # Run Main Routine to start the bot
     mybot = MyBot(plugins, settings["command_char"], settings["nick"], settings["oauth"], settings["stream"])
