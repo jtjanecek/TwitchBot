@@ -40,7 +40,7 @@ class MyBot():
         PASS_S = "PASS " + self._pass + "\r\n"
         self._socket.send(PASS_S.encode())
     
-        NICK_S = "NICK " + self._nick + "\r\n"
+        NICK_S = "NICK " + self._nick.lower() + "\r\n"
         self._socket.send(NICK_S.encode())
 
         JOIN_S = "JOIN #" + self._stream_to_watch + "\r\n"
