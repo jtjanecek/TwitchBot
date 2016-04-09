@@ -2,24 +2,27 @@
 # Created 3/19/2016
 
 # ---------------------------------------------------------------------------------------
-# The GUI for getting bot admin settings if you want to change the config.txt settings
-# ---------------------------------------------------------------------------------------
-from SettingsGUI import SettingsGUI
-
-# ---------------------------------------------------------------------------------------
 # Main bot code
 # ---------------------------------------------------------------------------------------
-from MyBot import MyBot
 
 # ---------------------------------------------------------------------------------------
 # Plugins... Also have to append to the plugins list in the main() function
 # Each plugin must have functioned defined in the README
 # ---------------------------------------------------------------------------------------
-from plugins import initialize_plugins
 
 # Used for running the main routine at the same time as the GUI
 import threading
 
+
+import os
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__),"plugins"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__),"guis"))
+
+
+from SettingsGUI import SettingsGUI
+from plugins import initialize_plugins
+from MyBot import MyBot
 
 
 
