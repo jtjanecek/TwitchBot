@@ -16,6 +16,14 @@ After running main.py (with python 3.5 or higher) a gui will appear to let the u
 The setup GUI can turned off by setting  "setup_gui=0" in config.txt.
 After the bot joins the stream, another GUI will appear that will show logging information and an exit button.
 
+# config.txt
+nick:         The name of the bot (twitch account you created). 
+oauth:        The authentication for the bot. Get yours at https://twitchapps.com/tmi/ (Example: oauth:sjsdh135)
+command_char: The command character. example: !commands (! is command character)
+stream:       The stream for the bot to join.
+setup_gui:    This will make the main GUI appear if you want to change defaults. (make this 0 if you know you want to go with the defaults)
+post_on_join: The bot will post that it has joined the channel if this is 1.
+
 # Plugins
 Plugin functionality for those users who know python. See ExamplePlugin and TriviaPlugin for examples.
 
