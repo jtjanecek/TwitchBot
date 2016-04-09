@@ -1,9 +1,19 @@
 # TwitchBot
 A twitch bot made in python. 
 
+# What You Need
+1. A Twitch Account (for the bot to use)
+2. An "oauth" password. Can be obtained here: https://twitchapps.com/tmi/
+3. A Command Character: used before bot commands (example: "!commands", the command character is !)
+4. A Stream You want your bot to join!
+
+You can either default these by using the config.txt, or you can manually enter them into the GUI.
+
 # Setup
-config.txt contains all the default setup information. You can run it without changing the defaults and go to twitch.tv/examplebot1 to see the defaults of the bot.
-After running main.py (with python 3.4 or higher) a gui will appear to let the user change the defaults at runtime.
+config.txt contains all the default setup information. Change this to change the default settings.
+You can run it without changing the defaults (and leave fields blank) and go to twitch.tv/examplebot1 to see the defaults of the bot.
+After running main.py (with python 3.5 or higher) a gui will appear to let the user change the defaults at runtime.
+The setup GUI can turned off by setting  "setup_gui=0" in config.txt.
 After the bot joins the stream, another GUI will appear that will show logging information and an exit button.
 
 # Plugins
