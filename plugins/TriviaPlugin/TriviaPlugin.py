@@ -6,11 +6,12 @@ from collections import defaultdict
 import random
 from time import sleep
 import threading
-
+import os
 
 
 class TriviaPlugin():
     def __init__(self):
+        self._dir = os.path.dirname(__file__)
         self._num_questions_left = 0
         self._questions = []
         self._trivia_sc = []
@@ -30,21 +31,21 @@ class TriviaPlugin():
     
     def _load_into_memory(self):
         # Load SC Trivia into self._trivia_sc
-        f = open("sctrivia.txt")
+        f = open(os.path.join(self._dir,"sctrivia.txt"))
         lines = f.read().splitlines()
         f.close()
         for line in lines:
             self._trivia_sc.append(line.split("|"))
         
         # Load General Trivia into self._trivia_gen
-        of = open("trivia.txt")
+        of = open(os.path.join(self._dir,"trivia.txt"))
         lines = of.read().splitlines()
         of.close()
         for line in lines:
             self._trivia_gen.append(line.split("|"))
             
         # Load the user points into memory
-        f1 = open("points.txt")
+        f1 = open(os.path.join(self._dir,"points.txt"))
         lines = f1.read().splitlines()
         f1.close()
         for line in lines:
