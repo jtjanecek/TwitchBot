@@ -1,0 +1,188 @@
+Who am I: I only hacked 5 games!|PureLegacy
+What is Duran's first name?|Samir
+Who is the master of the Zerg Swarms?|Overmind
+Who is the commander in the Sons of Korhal?|Jim Raynor
+This Overlord hero borrowed its name from Norse Mythology.|Yggdrasill
+Cheats: Invincible units.|Power Overwhelming
+Cheats: Gives you 10,000 gas and minerals.|Show Me The Money
+Cheats: Speeds construction.|Operation CWAL
+Cheats: Unlimited energy.|The Gathering
+Cheats: Ends game with loss.|Game Over Man
+Cheats: Prevents mission from ending.|Staying Alive
+Cheats: Completes current mission.|There Is No Cow Level
+Cheats: Free Minerals.|Whats Mine Is Mine
+Cheats: Free Gas.|Breathe Deep
+Cheats: Gives all upgrades.|Something For Nothing
+Cheats: Shows Entire Map|Black Sheep Wall
+Cheats: Ability to build beyond the support limit.|Food For Thought
+Planets: Jungle world. Homeworld of the Protoss. Furious seas.|Aiur
+Planets: Remote ash world. Zerg base of operations.|Char
+Planets: In the Koprulu Sector. Second Terran planet.|Mar Sara
+Planets: Homeworld of the Dark Templar. Twilight world. Devoid of plant life.|Shakuras
+What is PureLegacy's old name?|CaptainCam
+What is PureGosu's old name?|Deadpool
+What unit is massed in the "Hades" build?|Phoenix
+What unit can use the 'Nuke' ability?|Ghost
+What team went 100-0 in 4v4 in HotS?|lmnt
+What terran mech steamer massed Ravenin TvZ in Heart of the Swarm?|avilo
+Who only loses to Hackers and Stream cheaters?|protech
+Unit Speech: You want a piece of me boy?|Marine
+Unit Speech: Ready for dustoff!|Medivac
+Unit Speech: We need focus!|Archon
+Unit Speech: Engine screaming.|Banshee
+Unit Speech: Who called in the fleet?|Battlecruiser
+Unit Speech: Victory awaits.|Carrier
+Unit Speech: I bask in the twilight.|Dark Templar
+Unit Speech: Need a light?|Firebat
+Unit Speech: Solo operative right?|Ghost
+Unit Speech: Gettin' fired up here boss.|Hellbat
+Unit Speech: Daylight's burnin'.?|Hellion
+Unit Speech: Our minds are as one.|High Templar
+Unit Speech: Our duty is unending.|Immortal
+Unit Speech: Say the word baby.|Marauder
+Unit Speech: For the last time, this is not a stripogram!|Medic
+Unit Speech: Justice has come.|Mothership
+Unit Speech: You seek guidance?|Oracle
+Unit Speech: Teleport successful.|Phoenix
+Unit Speech: Scanning battlefield conditions.|Raven
+Unit Speech: Death from above.|Reaper
+Unit Speech: Ah, greetings command.|Science Vessel
+Unit Speech: My cow died last night so I don't need your bull.|SCV
+Unit Speech: Fueled up ready to go.|Siege Tank
+Unit Speech: I am the voice of the eclipse.|Stalker
+Unit Speech: Direct my vengence.|Tempest
+Unit Speech: I am here, CLICK ME!|Thor
+Unit Speech: Transformation systems primed.|Viking
+Unit Speech: Channel the light of Aiur.|Void Ray
+Unit Speech: We stand as one.|Zealot
+Unit Speech (BW): "I told 'em I was claustrophobic... I gotta get outta here!"|SCV
+Unit Speech (BW): "We gotta move."|Marine
+Unit Speech (BW): "Nothing like a good smoke."|Firebat
+Unit Speech (BW): "He's dead Jim."|Medic
+Unit Speech (BW): "You call down the thunder."|Ghost
+Unit Speech (BW): "I dig."|Vulture
+Unit Speech (BW): "What is your major malfunction?"|Siege Tank
+Unit Speech (BW): "Checklist completed... SOB!"|Goliath
+Unit Speech (BW): "I gotta get me one of these!"|Wraith
+Unit Speech (BW): "Strap yourselves in boys!"|Dropship
+Unit Speech (BW): "Ah, the ship, out of danger?"|Science Vessel
+Unit Speech (BW): "Shields up, weapons online."|Battlecruiser
+Unit Speech (BW): "This is very interesting, but stupid."|Valkyrie
+Unit Speech (BW): "I am wretched."|Infested Terran
+Unit Speech (BW): "Honor guide me."|Zealot
+Unit Speech (BW): "Drop your weapons, you have 15 seconds to comply."|Dragoon
+Unit Speech (BW): "Your thoughts betray you."|High Templar
+Unit Speech (BW): "Power overwhelming!"|Archon
+Unit Speech (BW): "You could no more evade my wrath."|Dark Templar
+Unit Speech (BW): "Darkness overpowering."|Dark Archon
+Unit Speech (BW): "One small step for man, one giant...STOP POKING ME!"|Observer
+Unit Speech (BW): "Adjusting neural transmission."|Scout
+Unit Speech (BW): "...and still you procrastinate!"|Carrier
+Unit Speech (BW): "And now for your first lesson."|Arbiter
+Unit Speech (BW): "Zephram Cochran, is that you? What did you do to your hair?"|Corsair
+Unit Cost  [Minerals]: Marine|50
+Unit Cost [Minerals]: Ghost|200
+Unit Cost [Gas]: Ghost|100
+Unit Supply: Ghost|2
+Unit Cost [Minerals]: Marauder|100
+Unit Cost [Gas]: Marauder|25
+Unit Supply: Marauder|2
+Unit Cost [Minerals]: Widow Mine|75
+Unit Cost [Gas]: Window Mine|25
+Unit Supply: Window Mine|2
+Unit Cost [Minerals]: Cyclone|150
+Unit Cost [Gas]: Cyclone|150
+Unit Supply: Cyclone|3
+Unit Cost [Minerals]: Siege Tank|150
+Unit Cost [Gas]: Siege Tank|125
+Unit Supply: Siege Tank|3
+Unit Cost [Minerals]: Thor|300
+Unit Cost [Gas]: Thor|300
+Unit Supply: Thor|6
+Unit Cost [Minerals]: Viking|150
+Unit Cost [Gas]: Viking|75
+Unit Supply: Viking|2
+Unit Cost [Minerals]: Raven|100
+Unit Cost [Gas]: Raven|200
+Unit Supply: Raven|3
+Unit Cost [Minerals]: Battlecruiser|400
+Unit Cost [Gas]: Battlecruiser|300
+Unit Supply: Battlecruiser|6
+Unit Cost [Minerals]: Liberator|150
+Unit Cost [Gas]: Liberator|150
+Unit Supply: Liberator|3
+Unit Cost [Minerals]: Stalker|125
+Unit Cost [Gas]: Stalker|50
+Unit Supply: Stalker|2
+Unit Cost [Minerals]: High Templar|50
+Unit Cost [Gas]: High Templar|150
+Unit Supply: High Templar|two
+Unit Cost [Minerals]: Dark Templar|125
+Unit Cost [Gas]: Dark Templar|125
+Unit Supply: Sentry|2
+Unit Cost [Minerals]:  Sentry|50
+Unit Cost [Gas]: Sentry|100
+Unit Supply: Sentry|2
+Unit Cost [Minerals]: Observer|25
+Unit Cost [Gas]: Observer|75
+Unit Supply: Observer|1
+Unit Cost [Minerals]: Warp Prism|200
+Unit Supply: Warp Prism|2
+Unit Cost [Minerals]: Inmortal|250
+Unit Cost [Gas]: Inmortal|100
+Unit Supply: Inmortal|4
+Unit Cost [Minerals]: Colossus|300
+Unit Cost [Gas]: Colossus|200
+Unit Supply: Colossus|6
+Unit Cost [Minerals]: Disruptor|150
+Unit Cost [Gas]: Disruptor|150
+Unit Supply: Disruptor|3
+Unit Cost [Minerals]: Phoenix|150
+Unit Cost [Gas]: Phoenix|100
+Unit Supply: Phoenix|2
+Unit Cost [Minerals]: Oracle|150
+Unit Cost [Gas]: Oracle|150
+Unit Supply: Oracle|3
+Unit Cost [Minerals]: Void Ray|250
+Unit Cost [Gas]: Void Ray|150
+Unit Supply: Void Ray|4
+Unit Cost [Minerals]: Tempest|300
+Unit Cost [Gas]: Tempest|200
+Unit Supply: Tempest|4
+Unit Cost [Minerals]: Carrier|350
+Unit Cost [Gas]: Carrier|250
+Unit Supply: Carrier|6
+Unit Cost [Minerals]: Roach|75
+Unit Cost [Gas]: Roach|25
+Unit Supply: Roach|2
+Unit Cost [Minerals]: Hydralisk|100
+Unit Cost [Gas]: Hydralisk|50
+Unit Supply: Hydralisk|2
+Unit Cost [Minerals]: Queen|150
+Unit Supply: Queen|2
+Unit Cost [Minerals]: Infestor|100
+Unit Cost [Gas]: Infestor|150
+Unit Supply: Infestor|2
+Unit Cost [Minerals]: Swarm Host|200
+Unit Cost [Gas]: Swarm Host|100
+Unit Supply: Swarm Host|3
+Unit Cost [Minerals]: Overseer|50
+Unit Cost [Gas]: Overseer|50
+Unit Cost [Minerals]: Mutalisk|100
+Unit Cost [Gas]: Mutalisk|100
+Unit Supply: Mutalisk|2
+Unit Cost [Minerals]: Corruptor|150
+Unit Cost [Gas]: Corruptor|100
+Unit Supply: Corruptor|2
+Unit Cost [Minerals]: Viper|100
+Unit Cost [Gas]: Viper|200
+Unit Supply: Viper|3
+Unit Cost [Minerals]: Ultralisk|300
+Unit Cost [Gas]: Ultralisk|200
+Unit Supply: Ultralisk|6
+Unit Cost [Minerals]: Brood Lord|300
+Unit Cost [Gas]: Brood Lord|250
+Unit Supply: Brood Lord|4
+Unit Cost [Minerals]: Aberration|200
+Unit Cost [Gas]: Aberration|75
+Unit Supply: Aberration|3
