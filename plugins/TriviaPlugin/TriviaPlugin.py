@@ -198,7 +198,7 @@ class TriviaPlugin():
     
     def unload_memory(self) -> None:
         # Writes memory points back to the file
-        of = open("points.txt","w")
+        of = open(os.path.join(self._dir,"points.txt"),"w")
         for item in self._point_dict.items():
             of.write(item[0] + "|" + str(item[1]) + "\n")
         
