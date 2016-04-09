@@ -2,4 +2,4 @@ nick=examplebot1
 oauth=oauth:qe6pdb9g5fbj9o5ip7ww3j20tueuzw
 command_char=%
 stream=examplebot1
-debug_prompt=0
+debug=0
