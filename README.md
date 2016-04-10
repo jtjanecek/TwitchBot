@@ -29,6 +29,8 @@ setup_gui:    This will make the main GUI appear if you want to change defaults.
 
 post_on_join: The bot will post that it has joined the channel if this is 1.
 
+use_plugins:  This will automatically enable all plugins in the plugins folder.
+
 # Plugins
 Plugin functionality for those users who know python. See ExamplePlugin and TriviaPlugin for examples.
 
