@@ -51,8 +51,11 @@ def main():
         plugins = []
 
     if settings["setup_gui"] == "1":
-        settings = SettingsGUI(settings,plugins).main_routine()
+        tup = SettingsGUI(settings,plugins).main_routine()
+        settings = tup[0]
+        plugins = tup[1]
 
+    print("END: " + str(plugins))
     # Run Main Routine to start the bot
     
     start_bot(settings,plugins)
