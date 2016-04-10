@@ -34,20 +34,25 @@ def read_config() -> dict:
         settings[temp[0]] = temp[1]
     return settings
 
+def start_bot(settings,plugins):
+    mybot = MyBot(plugins, settings["command_char"], settings["nick"], settings["oauth"], settings["stream"], settings["post_on_join"])
+    t = threading.Thread(target = mybot.main_routine)
+    t.daemon = True
+    t.start()
+    mybot.start_gui()
+
 
 def main():
     settings = read_config()
     plugins = initialize_plugins()
 
     if settings["setup_gui"] == "1":
-        settings = SettingsGUI(settings).main_routine()
+        settings = SettingsGUI(settings,plugins).main_routine()
 
     # Run Main Routine to start the bot
-    mybot = MyBot(plugins, settings["command_char"], settings["nick"], settings["oauth"], settings["stream"], settings["post_on_join"])
-    t = threading.Thread(target = mybot.main_routine)
-    t.daemon = True
-    t.start()
-    mybot.start_gui()
+    
+    #start_bot(settings,plugins)
+    
 
 if __name__ == "__main__":
     main()
