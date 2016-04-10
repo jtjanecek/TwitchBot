@@ -189,10 +189,10 @@ class TriviaPlugin():
         if message[0] != command_char:
             return False
         if message[1:7] == "trivia":
-            if len(message) > 7 and message[8:] == "sc":
-                self._trivia_type = "sc"   
+            if len(message) > 7 and message[8:] == "gen":
+                self._trivia_type = "gen"   
             else:
-                self._trivia_type = "gen"
+                self._trivia_type = "sc"
             return True    
         return False
 
