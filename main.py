@@ -15,6 +15,7 @@ import os
 import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__),"plugins"))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__),"guis"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__),"MyBot"))
 
 
 from SettingsGUI import SettingsGUI
