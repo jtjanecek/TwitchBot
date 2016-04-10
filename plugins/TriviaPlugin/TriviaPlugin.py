@@ -195,6 +195,9 @@ class TriviaPlugin():
                 self._trivia_type = "gen"
             return True    
         return False
+
+    def name(self) -> str:
+        return "TriviaPlugin"
     
     def unload_memory(self) -> None:
         # Writes memory points back to the file

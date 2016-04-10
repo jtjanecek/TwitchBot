@@ -20,6 +20,8 @@ class ExamplePlugin():
     # ==========================================================================
     #                      Methods Needed for every plugin    
     # ==========================================================================
+    def name(self) -> str:
+        return "ExamplePlugin"
     
     def __str__(self) -> str:
         ''' Return the command used to start the plugin.
