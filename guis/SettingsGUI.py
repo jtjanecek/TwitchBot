@@ -2,9 +2,10 @@ import tkinter
 
 
 class SettingsGUI():
-    def __init__(self, current_settings: dict):
+    def __init__(self, current_settings: dict, current_plugins: list):
         self._root = tkinter.Tk()
         self._settings = current_settings
+        self._plugins = current_plugins
 
         self._title_label = tkinter.Label(self._root, text = "Welcome to MyBot!" ,font=("Helvetica", 16))
         self._title_label.grid(row = 1, column = 1, sticky = "N", columnspan = 2)
@@ -32,16 +33,27 @@ class SettingsGUI():
         self._stream_entry = tkinter.Entry(self._root)
         self._stream_entry.grid(row = 7,column = 2)    
 
+        current_index = 9
+        if current_plugins != []:
+            self._plugins_label = tkinter.Label(self._root, text = ("Check the Plugins you want to use"))
+            self._plugins_label.grid(row = 8, column = 1)
+            for i in range(len(current_plugins)):
+                exec("self._var" + str(i) + " = tkinter.IntVar()")	
+                exec("self._check" + str(i) + " = tkinter.Checkbutton(self._root,text = \"" + (self._plugins[i].name()) + "\", variable = " + "self._var" + str(i) + ")")	
+                exec("self._check" + str(i) + ".grid(row = " + str(current_index) + ",column = 1)")
+                current_index += 1
+
+
 
         self._join_button = tkinter.Button(self._root,text = "Join Stream", command = self._join_stream)
-        self._join_button.grid(row = 8, column = 2, sticky = "E")
+        self._join_button.grid(row = 100, column = 2, sticky = "E")
                 
         
 
 
     def main_routine(self) -> dict:
         self._root.mainloop()
-        return self._settings
+        return (self._settings, self._plugins)
 
     def _join_stream(self):
         if self._nick_entry.get() != "":
@@ -53,5 +65,13 @@ class SettingsGUI():
         if self._stream_entry.get() != "":
             self._settings["stream"] = self._stream_entry.get()        
         
+        if self._plugins != []:
+            plugins_to_delete = []
+            for i in range(len(self._plugins)):
+                value = eval("self._var" + str(i) + ".get()")
+                if value == 0:
+                     plugins_to_delete.append(self._plugins[i].name())
+            self._plugins = [plug for plug in self._plugins if plug.name() not in plugins_to_delete]
+
         self._root.destroy()
 
