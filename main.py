@@ -44,14 +44,18 @@ def start_bot(settings,plugins):
 
 def main():
     settings = read_config()
-    plugins = initialize_plugins()
+
+    if settings["use_plugins"] == "1":
+        plugins = initialize_plugins()
+    else:
+        plugins = []
 
     if settings["setup_gui"] == "1":
         settings = SettingsGUI(settings,plugins).main_routine()
 
     # Run Main Routine to start the bot
     
-    #start_bot(settings,plugins)
+    start_bot(settings,plugins)
     
 
 if __name__ == "__main__":

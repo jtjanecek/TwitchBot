@@ -4,3 +4,4 @@ command_char=%
 stream=examplebot1
 setup_gui=1
 post_on_join=0
+use_plugins=0
