@@ -2,11 +2,6 @@
 # Created 3/19/2016
 
 
-# ---------------------------------------------------------------------------------------
-# Plugins... Also have to append to the plugins list in the main() function
-# Each plugin must have functioned defined in the README
-# ---------------------------------------------------------------------------------------
-
 # Used for running the main routine at the same time as the GUI
 import threading
 
@@ -56,7 +51,6 @@ def main():
         settings = tup[0]
         plugins = tup[1]
 
-    print("END: " + str(plugins))
     # Run Main Routine to start the bot
     
     start_bot(settings,plugins)

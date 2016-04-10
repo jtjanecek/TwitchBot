@@ -5,4 +5,4 @@ stream=examplebot1
 setup_gui=1
 post_on_join=0
 use_plugins=1
-logging=0
+logging=1
