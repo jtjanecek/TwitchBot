@@ -1,5 +1,3 @@
-
-
 import socket
 import sys     
 import time
@@ -31,10 +29,10 @@ class MyBot():
 
         self._socket = socket.socket()
         self._socket.settimeout(1)
-        self.log(" Created Socket")
+        self.log("SYS: Created Socket")
     
         self._socket.connect((self._host,self._port))
-        self.log(" Connected socket to " + str(self._host) + ":" + str(self._port))
+        self.log("SYS: Connected socket to " + str(self._host) + ":" + str(self._port))
 
         self._send_initializers()
         
@@ -45,8 +43,14 @@ class MyBot():
         self._logging = True
         self._lock  = threading.Lock()
         self._queue = []
-        
+
+        #t = threading.Thread( target = self._log_thread)
+        #t.daemon = True
+        #t.start()
         # start thread
+
+    def _log_thread(self):
+        pass
 
         
     def _send_initializers(self):
@@ -66,14 +70,14 @@ class MyBot():
 
     def _read_beginning_intro(self):
         ''' Reads the information that twitch api sends at 
-              the beginning
+              the beginning of the connection
         '''
-        self.log("Initializing...")
+        self.log("SYS: Initializing...")
         buf = self._socket.recv(self._bytes_to_read).decode()
         while "End of" not in buf:
             buf = self._socket.recv(self._bytes_to_read).decode()
-        self.log("Ready.")
-        self.log("Starting bot...")
+        self.log("SYS: Ready.")
+        self.log("SYS: Starting bot...")
 
         if self._post_on_join == "1":
             self.send_msg(self._nick + " has joined the channel. Type " + self._command_char + "commands for a list of commands.")
@@ -96,7 +100,7 @@ class MyBot():
             plugin.unload_memory()
     
         self._socket.close()
-        self.log(" Shutdown successful")
+        self.log("SYS: Shutdown successful")
         sys.exit()
 
     def _do_commands(self):
@@ -138,7 +142,7 @@ class MyBot():
         time.sleep(.5)
         # Sends 'message' to the socket using twitch API formatting
         buf = "PRIVMSG #" + self._stream_to_watch + " :" + message + "\r\n"
-        self.log(" Sending --> " + self._nick + " :" + message)
+        self.log("Send: " + self._nick + ":" + message)
         self._socket.send(buf.encode())
         time.sleep(.5)
 
@@ -162,7 +166,7 @@ class MyBot():
             message = readbuf.split("#")
             received_user = message[0].split("!")[0][1:].strip()
             received_message = message[1].split(":")[1].strip();            
-            self.log(received_user + " : " + received_message)
+            self.log("Recv: " + received_user + ": " + received_message)
             return (received_user,received_message)
         except:
             # Message is a ping from the server
@@ -198,4 +202,3 @@ class MyBot():
         self._shutdown_socket()
         
         
-    
