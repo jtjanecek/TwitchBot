@@ -17,7 +17,7 @@ class MyBot():
         if settings["logging"] == "1":
             self._start_logger()
             
-        self._command_char = settings["command_character"]
+        self._command_char = settings["command_char"]
         self._bytes_to_read = 1024
         self._port = 6667
         self._host = "irc.twitch.tv" 
@@ -30,6 +30,7 @@ class MyBot():
         self._gui = BotGUI()
 
         self._socket = socket.socket()
+        self._socket.settimeout(1)
         self.log(" Created Socket")
     
         self._socket.connect((self._host,self._port))
@@ -149,15 +150,22 @@ class MyBot():
          Returns a tuple of the username / message
          If ping is sent, sends PONG to the socket
         '''
-        readbuf = self._socket.recv(self._bytes_to_read).decode()
+        
+        try:
+            readbuf = self._socket.recv(self._bytes_to_read).decode()
+        except:
+            return ("None","None")
+        
         self._check_ping(readbuf)
         try:
+            # Message is normal message
             message = readbuf.split("#")
             received_user = message[0].split("!")[0][1:].strip()
             received_message = message[1].split(":")[1].strip();            
             self.log(received_user + " : " + received_message)
             return (received_user,received_message)
         except:
+            # Message is a ping from the server
             return ("PING","PONG")        
            
            
@@ -172,7 +180,7 @@ class MyBot():
             Useful for debugging. 
             Can be used in plugins
         '''
-        if (self._logger):
+        if (self._logging):
             pass
         self._gui.show(msg)
            
