@@ -31,7 +31,7 @@ def read_config() -> dict:
     return settings
 
 def start_bot(settings,plugins):
-    mybot = MyBot(plugins, settings["command_char"], settings["nick"], settings["oauth"], settings["stream"], settings["post_on_join"])
+    mybot = MyBot(settings,plugins)
     t = threading.Thread(target = mybot.main_routine)
     t.daemon = True
     t.start()
