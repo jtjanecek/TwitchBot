@@ -1,4 +1,4 @@
-g
+
 
 import socket
 import sys     
