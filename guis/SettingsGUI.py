@@ -1,18 +1,27 @@
 import tkinter
+import sys
 
 
 class SettingsGUI():
     def __init__(self, current_settings: dict, current_plugins: list):
         self._root = tkinter.Tk()
+
+        # Check if x button in corner was clicked
+        self._root.protocol('WM_DELETE_WINDOW', self.on_x_button)
+        self._x_button_clicked = False
+
         self._settings = current_settings
         self._plugins = current_plugins
 
+
+        # Title of GUI
         self._title_label = tkinter.Label(self._root, text = "Welcome to MyBot!" ,font=("Helvetica", 16))
         self._title_label.grid(row = 1, column = 1, sticky = "N", columnspan = 2)
 
         self._description = tkinter.Label(self._root, text = "Leave fields below blank to use defaults specified in defaults.txt (shown in brackets)")
         self._description.grid(row = 2, column = 1, sticky = "N", columnspan = 2)
 
+        # Default entries
         self._nick_label = tkinter.Label(self._root, text = ("Bot nickname [default: " + self._settings["nick"] + "]"))
         self._nick_label.grid(row = 4, column = 1, sticky ="W")
         self._nick_entry = tkinter.Entry(self._root)
@@ -33,6 +42,8 @@ class SettingsGUI():
         self._stream_entry = tkinter.Entry(self._root)
         self._stream_entry.grid(row = 7,column = 2)    
 
+        # Checkboxes for settings
+
         self._post_on_join_var = tkinter.IntVar()
         self._post_on_join_check = tkinter.Checkbutton(self._root,text = "Post On Join", variable = self._post_on_join_var)
         self._post_on_join_check.grid(row = 8, column = 1)
@@ -43,6 +54,7 @@ class SettingsGUI():
          
 
 
+        # Checkboxes for plugins
 
         current_index = 13
         if current_plugins != []:
@@ -56,14 +68,25 @@ class SettingsGUI():
 
 
 
+        # Join stream button
+        
         self._join_button = tkinter.Button(self._root,text = "Join Stream", command = self._join_stream)
         self._join_button.grid(row = 100, column = 2, sticky = "E")
                 
         
-
+    def on_x_button(self):
+        # x button in corner was clicked
+        self._x_button_clicked = True
+        self._root.destroy()
 
     def main_routine(self) -> dict:
         self._root.mainloop()
+
+        # If x button was clicked, exit completely
+        if self._x_button_clicked:
+            sys.exit()
+
+        # Else return the updated settings
         return (self._settings, self._plugins)
 
     def _join_stream(self):
