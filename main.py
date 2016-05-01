@@ -39,22 +39,23 @@ def start_bot(settings,plugins):
 
 
 def main():
+    # Settings based on config.txt
     settings = read_config()
 
+    # Initialize Plugins
     if settings["use_plugins"] == "1":
         plugins = initialize_plugins()
     else:
         plugins = []
 
+    # Update settings, plugins based on GUI
     if settings["setup_gui"] == "1":
         tup = SettingsGUI(settings,plugins).main_routine()
         settings = tup[0]
         plugins = tup[1]
 
     # Run Main Routine to start the bot
-    
     start_bot(settings,plugins)
     
-
 if __name__ == "__main__":
     main()
