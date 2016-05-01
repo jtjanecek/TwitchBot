@@ -33,10 +33,21 @@ class SettingsGUI():
         self._stream_entry = tkinter.Entry(self._root)
         self._stream_entry.grid(row = 7,column = 2)    
 
-        current_index = 9
+        self._post_on_join_var = tkinter.IntVar()
+        self._post_on_join_check = tkinter.Checkbutton(self._root,text = "Post On Join", variable = self._post_on_join_var)
+        self._post_on_join_check.grid(row = 8, column = 1)
+         
+        self._logging_var = tkinter.IntVar()
+        self._logging_check = tkinter.Checkbutton(self._root,text = "Logging", variable = self._logging_var)
+        self._logging_check.grid(row = 9, column = 1)
+         
+
+
+
+        current_index = 13
         if current_plugins != []:
             self._plugins_label = tkinter.Label(self._root, text = ("Check the Plugins you want to use"))
-            self._plugins_label.grid(row = 8, column = 1)
+            self._plugins_label.grid(row = 12, column = 1)
             for i in range(len(current_plugins)):
                 exec("self._var" + str(i) + " = tkinter.IntVar()")	
                 exec("self._check" + str(i) + " = tkinter.Checkbutton(self._root,text = \"" + (self._plugins[i].name()) + "\", variable = " + "self._var" + str(i) + ")")	
@@ -63,7 +74,18 @@ class SettingsGUI():
         if self._command_char_entry.get() != "":
             self._settings["command_char"] = self._command_char_entry.get()
         if self._stream_entry.get() != "":
-            self._settings["stream"] = self._stream_entry.get()        
+            self._settings["stream"] = self._stream_entry.get()
+
+        if self._post_on_join_var.get() == 0:
+            self._settings["post_on_join"] = '0'
+        else:
+            self._settings["post_on_join"] = '1'
+        if self._logging_var.get() == 0:
+            self._settings["logging"] = '0'
+        else:
+            self._settings["logging"] = '1'
+
+            
         
         if self._plugins != []:
             plugins_to_delete = []
