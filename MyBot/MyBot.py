@@ -66,11 +66,14 @@ class MyBot():
             sleep for 5 seconds, then read all messages and add them to log.txt
         '''
         while(self._is_alive()):
-            time.sleep(3)
+            time.sleep(1)
             self._lock.acquire()
+            print(" Writing..." + str(self._queue))
             fd = open(self._log_file_path,"a")
             for num in range(len(self._queue)):
-                fd.write(self._queue.pop() + "\n")
+                the_value = self._queue.pop(0)
+                print("Writing: " + the_value)
+                fd.write(the_value + "\n")
             fd.close()
             self._lock.release()
 
