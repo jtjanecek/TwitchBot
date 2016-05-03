@@ -3,6 +3,7 @@ import sys
 import time
 from BotGUI import BotGUI
 import threading
+import os
 
 
 class MyBot():
@@ -10,11 +11,10 @@ class MyBot():
         ''' Initializes the socket and the Bot
         '''
 
-        # Start logging if it is set.
-        self._logging = False
-        if settings["logging"] == "1":
-            self._start_logger()
-            
+        # Initialize GUI
+        self._gui = BotGUI()
+
+        # Setup object variables
         self._command_char = settings["command_char"]
         self._bytes_to_read = 1024
         self._port = 6667
@@ -25,8 +25,12 @@ class MyBot():
         self._post_on_join = settings["post_on_join"]
         self._plugins = plugins
 
-        self._gui = BotGUI()
+        # Start logging if it is set.
+        self._logging = False
+        if settings["logging"] == "1":
+            self._start_logger()
 
+        # Connect the socket
         self._socket = socket.socket()
         self._socket.settimeout(1)
         self.log("SYS: Created Socket")
@@ -42,16 +46,39 @@ class MyBot():
     def _start_logger(self):
         self._logging = True
         self._lock  = threading.Lock()
-        self._queue = []
+        now = time.strftime("%c")
+        log_session = "================ LOG "
+        log_session += str(now) + " " + self._stream_to_watch + " "
+        log_session += "================"
+        self._queue = [log_session]
 
-        #t = threading.Thread( target = self._log_thread)
-        #t.daemon = True
-        #t.start()
-        # start thread
+        # Path of log.txt in the MyBot folder
+        self._log_file_path = os.path.join(os.path.join(os.getcwd(),"MyBot"),"log.txt")        
 
-    def _log_thread(self):
-        pass
+        # Thread to write the queue to the file.
+        t = threading.Thread( target = self._log_thread_to_file)
+        t.daemon = True
+        t.start()
 
+        
+    def _log_thread_to_file(self):
+        ''' While the bot is alive,
+            sleep for 5 seconds, then read all messages and add them to log.txt
+        '''
+        while(self._is_alive()):
+            time.sleep(3)
+            self._lock.acquire()
+            fd = open(self._log_file_path,"a")
+            for num in range(len(self._queue)):
+                fd.write(self._queue.pop() + "\n")
+            fd.close()
+            self._lock.release()
+
+
+    def _add_to_log_queue(self, message):
+        self._lock.acquire()
+        self._queue.append(message)
+        self._lock.release()
         
     def _send_initializers(self):
         ''' Sends initialization to the server '''
@@ -185,7 +212,7 @@ class MyBot():
             Can be used in plugins
         '''
         if (self._logging):
-            pass
+            self._add_to_log_queue(msg)
         self._gui.show(msg)
            
     def main_routine(self):
