@@ -31,10 +31,14 @@ def read_config() -> dict:
     return settings
 
 def start_bot(settings,plugins):
+
+    # Start the bot
     mybot = MyBot(settings,plugins)
     t = threading.Thread(target = mybot.main_routine)
     t.daemon = True
     t.start()
+
+    # Start the gui for the user
     mybot.start_gui()
 
 
@@ -43,12 +47,13 @@ def main():
     settings = read_config()
 
     # Initialize Plugins
-    if settings["use_plugins"] == "1":
+    #   initialize_plugins() comes from plugins.py in the plugins folder
+    if settigs["use_plugins"] == "1":
         plugins = initialize_plugins()
-    else:
-        plugins = []
+    else plugins = []
 
-    # Update settings, plugins based on GUI
+    # Update settings, plugins based on GUI.
+    #    If setup_gui is off, then it will go with the defaults from config.txt
     if settings["setup_gui"] == "1":
         tup = SettingsGUI(settings,plugins).main_routine()
         settings = tup[0]
