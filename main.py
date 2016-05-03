@@ -48,9 +48,10 @@ def main():
 
     # Initialize Plugins
     #   initialize_plugins() comes from plugins.py in the plugins folder
-    if settigs["use_plugins"] == "1":
+    if settings["use_plugins"] == "1":
         plugins = initialize_plugins()
-    else plugins = []
+    else:
+        plugins = []
 
     # Update settings, plugins based on GUI.
     #    If setup_gui is off, then it will go with the defaults from config.txt
