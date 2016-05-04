@@ -16,7 +16,7 @@ class MyBot():
 
         # Setup object variables
         self._command_char = settings["command_char"]
-        self._bytes_to_read = 1024
+        self._bytes_to_read = 256
         self._port = 6667
         self._host = "irc.twitch.tv" 
         self._nick = settings["nick"]
