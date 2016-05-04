@@ -15,14 +15,22 @@ The setup GUI can turned off by setting  "setup_gui=0" in config.txt.
 After the bot joins the stream, another GUI will appear that will show logging information and an exit button.
 
 # config.txt
-* nick:         The name of the bot (all lowercase)
-* oauth:        The authentication for the bot. Get yours at https://twitchapps.com/tmi/
-* command_char: The command character. example: !commands (! is command character)
-* stream:       The stream for the bot to join
-* setup_gui:    Use SetupGUI for input of defaults; otherwise will use defaults in config.txt
-* use_plugins:  This will automatically enable or disable all plugins in the plugins folder
-* post_on_join: The bot will post that it has joined the channel
-* logging:      Automatically log all chat in MyBot/log.txt
+* nick:         
+	* The name of the bot (all lowercase)
+* oauth: 
+	* The authentication for the bot. Get yours at https://twitchapps.com/tmi/
+* command_char: 
+	* The command character. example: !commands (! is command character)
+* stream:       
+	* The stream for the bot to join
+* setup_gui:    
+	* Use SetupGUI for input of defaults; otherwise will use defaults in config.txt
+* use_plugins:  
+	* This will automatically enable or disable all plugins in the plugins folder
+* post_on_join: 
+	* The bot will post that it has joined the channel
+* logging:      
+	* Automatically log all chat in MyBot/log.txt
 
 # Plugins
 Plugin functionality for those users who know python. See ExamplePlugin and TriviaPlugin for examples.
