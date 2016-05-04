@@ -5,6 +5,8 @@ import sys
 class SettingsGUI():
     def __init__(self, current_settings: dict, current_plugins: list):
         self._root = tkinter.Tk()
+        self._root.title("MyBot")
+
 
         # Check if x button in corner was clicked
         self._root.protocol('WM_DELETE_WINDOW', self.on_x_button)
@@ -40,17 +42,20 @@ class SettingsGUI():
         self._stream_label = tkinter.Label(self._root,text = ("Stream for bot to join [default: " + self._settings["stream"] + "]"))
         self._stream_label.grid(row = 7, column = 1, sticky ="W")
         self._stream_entry = tkinter.Entry(self._root)
-        self._stream_entry.grid(row = 7,column = 2)    
+        self._stream_entry.grid(row = 7,column = 2)
 
         # Checkboxes for settings
 
+        self._settings_label = tkinter.Label(self._root,text = ("Settings"),font = "Helvetica 16 bold italic")
+        self._settings_label.grid(row = 8, column = 1, sticky = "W")
+
         self._post_on_join_var = tkinter.IntVar()
         self._post_on_join_check = tkinter.Checkbutton(self._root,text = "Post On Join", variable = self._post_on_join_var)
-        self._post_on_join_check.grid(row = 8, column = 1)
+        self._post_on_join_check.grid(row = 9, column = 1, stick = "W")
          
         self._logging_var = tkinter.IntVar()
         self._logging_check = tkinter.Checkbutton(self._root,text = "Logging", variable = self._logging_var)
-        self._logging_check.grid(row = 9, column = 1)
+        self._logging_check.grid(row = 10, column = 1, stick = "W")
          
 
 
@@ -58,12 +63,12 @@ class SettingsGUI():
 
         current_index = 13
         if current_plugins != []:
-            self._plugins_label = tkinter.Label(self._root, text = ("Check the Plugins you want to use"))
-            self._plugins_label.grid(row = 12, column = 1)
+            self._plugins_label = tkinter.Label(self._root, text = ("Plugins"),font = "Helvetica 16 bold italic")
+            self._plugins_label.grid(row = 12, column = 1, sticky = "W")
             for i in range(len(current_plugins)):
                 exec("self._var" + str(i) + " = tkinter.IntVar()")	
                 exec("self._check" + str(i) + " = tkinter.Checkbutton(self._root,text = \"" + (self._plugins[i].name()) + "\", variable = " + "self._var" + str(i) + ")")	
-                exec("self._check" + str(i) + ".grid(row = " + str(current_index) + ",column = 1)")
+                exec("self._check" + str(i) + ".grid(row = " + str(current_index) + ",column = 1, stick = \"W\")")
                 current_index += 1
 
 
