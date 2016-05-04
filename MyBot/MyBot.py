@@ -68,11 +68,9 @@ class MyBot():
         while(self._is_alive()):
             time.sleep(1)
             self._lock.acquire()
-            print(" Writing..." + str(self._queue))
             fd = open(self._log_file_path,"a")
             for num in range(len(self._queue)):
                 the_value = self._queue.pop(0)
-                print("Writing: " + the_value)
                 fd.write(the_value + "\n")
             fd.close()
             self._lock.release()
