@@ -1,8 +1,6 @@
-nick=examplebot1
-oauth=oauth:qe6pdb9g5fbj9o5ip7ww3j20tueuzw
-command_char=%
-stream=examplebot1
-setup_gui=1
-post_on_join=0
+nick=sc2_triviabot
+oauth=oauth:1234567
+command_char=!
+stream=practicex
 use_plugins=1
-logging=1
+cli=enable

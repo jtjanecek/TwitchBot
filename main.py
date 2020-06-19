@@ -1,23 +1,15 @@
-# Author: John Janecek
-# Created 3/19/2016
-
-
-# Used for running the main routine at the same time as the GUI
 import threading
+import signal
+import logging
 
-
-import os
 import sys
+import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__),"plugins"))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__),"guis"))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__),"MyBot"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__),"TwitchChatBot"))
+os.environ['PYTHONUNBUFFERED'] = 'True'
 
-
-from SettingsGUI import SettingsGUI
 from plugins import initialize_plugins
-from MyBot import MyBot
-
-
+from TwitchChatBot import TwitchChatBot
 
 def read_config() -> dict:
     # Returns a dictionary with all the settings from config.txt
@@ -30,6 +22,7 @@ def read_config() -> dict:
         settings[temp[0]] = temp[1]
     return settings
 
+'''
 def start_bot(settings,plugins):
 
     # Start the bot
@@ -37,31 +30,39 @@ def start_bot(settings,plugins):
     t = threading.Thread(target = mybot.main_routine)
     t.daemon = True
     t.start()
+'''
 
-    # Start the gui for the user
-    mybot.start_gui()
+def signal_handler(sig, frame):
+	logging.info("Sig: {}".format(sig))
+	logging.info("Frame: {}".format(frame))
+	logging.info("End signal detected...")
+	logging.info('Done!')
+	sys.exit(0)
 
+signal.signal(signal.SIGINT, signal_handler)
 
-def main():
-    # Settings based on config.txt
-    settings = read_config()
+# Settings based on config.txt
+settings = read_config()
 
-    # Initialize Plugins
-    #   initialize_plugins() comes from plugins.py in the plugins folder
-    if settings["use_plugins"] == "1":
-        plugins = initialize_plugins()
-    else:
-        plugins = []
+if settings['cli'] == 'disable':
+	logging.basicConfig(level=logging.DEBUG,
+              format='%(asctime)s - %(module)s - %(levelname)s - %(message)s',
+              datefmt='%m-%d-%y %H:%M',
+              filename='logs/log.log',
+              filemode='w')
+else: # Output to CLI
+	logging.basicConfig(level=logging.DEBUG,
+              format='%(asctime)s - %(module)s - %(levelname)s - %(message)s',
+              datefmt='%m-%d-%y %H:%M')
 
-    # Update settings, plugins based on GUI.
-    #    If setup_gui is off, then it will go with the defaults from config.txt
-    if settings["setup_gui"] == "1":
-        tup = SettingsGUI(settings,plugins).main_routine()
-        settings = tup[0]
-        plugins = tup[1]
+logging.info("Using PID: {}".format(os.getpid()))
 
-    # Run Main Routine to start the bot
-    start_bot(settings,plugins)
-    
-if __name__ == "__main__":
-    main()
+# Initialize Plugins
+#   initialize_plugins() comes from plugins.py in the plugins folder
+if settings["use_plugins"] == "1":
+	plugins = initialize_plugins()
+else:
+	plugins = []
+
+# Run Main Routine to start the bot
+TwitchChatBot(settings,plugins)

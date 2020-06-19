@@ -1,208 +1,88 @@
-# Trivia Plugin
-# Author: John Janecek
-# Created 3/21/2016
-
+import logging
 from collections import defaultdict
 import random
+from datetime import datetime 
+from datetime import timedelta
 from time import sleep
 import threading
 import os
-
+import pandas as pd
+import sys
+sys.path.insert(0, os.path.dirname(__file__))
+from PointsDB import PointsDB
 
 class TriviaPlugin():
-    def __init__(self):
-        self._dir = os.path.dirname(__file__)
-        self._num_questions_left = 0
-        self._questions = []
-        self._trivia_sc = []
-        self._trivia_gen = []
-        self._blanks = []
-        self._point_dict = defaultdict(int)
-        self._trivia_type = "gen"
-        
-        self._load_into_memory()
-    
-    
-    # ==========================================================================
-    #                     Private Methods    
-    # ==========================================================================
+	def __init__(self):
+		self._dir = os.path.dirname(__file__)
+		self._load_questions()
 
-    
-    
-    def _load_into_memory(self):
-        # Load SC Trivia into self._trivia_sc
-        f = open(os.path.join(self._dir,"sctrivia.txt"))
-        lines = f.read().splitlines()
-        f.close()
-        for line in lines:
-            self._trivia_sc.append(line.split("|"))
-        
-        # Load General Trivia into self._trivia_gen
-        of = open(os.path.join(self._dir,"trivia.txt"))
-        lines = of.read().splitlines()
-        of.close()
-        for line in lines:
-            self._trivia_gen.append(line.split("|"))
-            
-        # Load the user points into memory
-        f1 = open(os.path.join(self._dir,"points.txt"))
-        lines = f1.read().splitlines()
-        f1.close()
-        for line in lines:
-            temp = line.split("|")
-            self._point_dict[temp[0]] = int(temp[1])
-        
+		self._db = PointsDB()
 
-    def _do_trivia_game(self):
-        # Called to start the Trivia game ( only 1 question )
-        #   Sends the question through mybot and starts the threads
-        #   to get the answer and read the messages.
-        
-        sleep(2)
-        self._mybot.send_msg(self._questions[0][0])
-        
-        self._blanks = []
-        self._initialize_blanks()
-        
-        self._lock = threading.Lock()
-        self._thread_stop = threading.Event()
-        blank_thread = threading.Thread(target = self._time_blanks)
-        check_thread = threading.Thread(target = self._check_answer)    
-        blank_thread.start()
-        check_thread.start()
-        blank_thread.join()
-        check_thread.join()
-    
-    def _time_blanks(self):
-        # Sets a 5 second timer. After the 5 seconds elapses, as soon  
-        #   as a chatter types something, it will display the 
-        #   hint as blanks with an extra letter filled in
-        while(not self._thread_stop.is_set()):
-            sleep(5)
-            self._lock.acquire()
-            if (self._thread_stop.is_set()):
-                self._lock.release()
-                break;
-            if "".join(self._blanks).lower() == self._questions[0][1].lower():
-                self._thread_stop.set()
-                self._lock.release()
-                break;
-            else:
-                self._fill_blank()
-                if "".join(self._blanks).lower() == self._questions[0][1].lower():
-                    self._thread_stop.set()
-                    self._lock.release()
-                    self._mybot.send_msg("Nobody got it... " + "".join(self._blanks))
-                    break;
-                else:
-                    self._mybot.send_msg(" ".join(self._blanks))
-    
-            self._lock.release()
-            
-       
-    def _check_answer(self):
-        # Thread function that constantly checks whether the 
-        #    incoming messages in chat are the answer to the question.
-        #    If they are, then _declare_winner() and break both threads.
-        while(not self._thread_stop.is_set()):
-            self._lock.acquire()
-            if "".join(self._blanks).lower() == self._questions[0][1].lower():
-                self._thread_stop.set()
-                self._mybot.send_msg("Nobody got it...")
-                self._lock.release()
-                break
-            else:
-                usr_msg = self._mybot.get_user_and_message()
-                answer = usr_msg[1]
-                if answer.lower() == self._questions[0][1].lower():
-                    self._declare_winner(usr_msg[0])
-                    self._thread_stop.set()
-                    self._lock.release()
-                    break
-            self._lock.release()
-            sleep(1)
-        
-        
-    def _initialize_blanks(self) -> None:
-        # Sets up blanks with number of characters as there are in the answer
-        for character in self._questions[0][1]:
-            if character == " ":    
-                self._blanks.append("-")
-            else: self._blanks.append("_")
-            
-            
-    def _fill_blank(self) -> None:
-        # Fills in one character in the HINT
-        while(True):
-            index = int(random.random() * len(self._questions[0][1]))
-            if self._blanks[index] == "_":
-                self._blanks[index] = self._questions[0][1][index].upper()
-                return;
-    
-        
-    def _declare_winner(self , winner: str) -> None:
-        # Sends a winner message and updates the points in memory
-        self._point_dict[winner] += 5
-        message = winner + " is the winner! "
-        message += "Awarded 5 Trivia Points. "
-        message += "Current points: " + str(self._point_dict[winner])
-        self._mybot.send_msg(message)
-        
-        
-    # ==========================================================================
-    #                      Methods Needed for every plugin    
-    # ==========================================================================
+		self._current_ans = None
+		self._timeout = None
 
-    
-    def __str__(self) -> str:
-        # Used for "commands" command
-        return "trivia"
-        
-    def start(self, mybot) -> None:
-        self._mybot = mybot
-        # Called to start 3 questions of trivia
-        
-        self._num_questions_left = 3
-        del self._questions[:] # Delete current leftover questions
-    
-        # Start sc trivia
-        random.seed();
-        if self._trivia_type == "sc":
-            sz = len(self._trivia_sc)
-            for i in range(3):
-                self._questions.append(self._trivia_sc[int(random.random()*sz)])
-        # Start General trivia
-        else:
-            sz = len(self._trivia_gen)
-            for i in range(3):
-                self._questions.append(self._trivia_gen[int(random.random()*sz)])
-    
-        # Ask each individual question
-        self._mybot.send_msg(" Starting 3 Questions of Trivia...")
-        for i in range(3): 
-            self._do_trivia_game()
-            del self._questions[0]  # Delete the question that was just asked.
-            self._num_questions_left -= 1
-            
-    def triggered(self, username, message, command_char) -> bool:
-        # Returns whether this plugin is triggered by the username / message
-        if message[0] != command_char:
-            return False
-        if message[1:7] == "trivia":
-            if len(message) > 7 and message[8:] == "gen":
-                self._trivia_type = "gen"   
-            else:
-                self._trivia_type = "sc"
-            return True    
-        return False
+		self._outbound_messages = []
+	
+	def _load_questions(self):
+		# Load SC Trivia into self._trivia_sc
+		folder = os.path.dirname(os.path.abspath(__file__))
+		df = pd.read_csv(os.path.join(folder,'questions.csv')).dropna()
+		self._questions = []
+		for kind, units, unit in df.values:
+			self._questions.append({'question': 'What is the [ {} ] for the [ {} ]?'.format(kind, unit), 'answer': str(int(units))})
+		for speech, unit in pd.read_csv(os.path.join(folder, 'questions_speech.tsv'),delimiter='\t').dropna().values:
+			self._questions.append({'question': '[ UNIT SPEECH ] {}'.format(speech), 'answer': unit})
 
-    def name(self) -> str:
-        return "TriviaPlugin"
-    
-    def unload_memory(self) -> None:
-        # Writes memory points back to the file
-        of = open(os.path.join(self._dir,"points.txt"),"w")
-        for item in self._point_dict.items():
-            of.write(item[0] + "|" + str(item[1]) + "\n")
-        
-        
+		for q in self._questions:
+			print('{} : {}'.format(q['question'], q['answer']))
+
+	def add_points(self, user) -> int:
+		''' Add points for this user and return the new points
+		'''
+		current_points = self._db.get(user)
+		new_points = current_points + 5
+		logging.info("Current points: {}".format(current_points))
+		logging.info("New points: {}".format(new_points))
+		self._db.update(user, new_points)
+		return str(new_points)
+
+	def check_for_answer(self, user, msg):
+		if msg.strip().lower() == self._current_ans.lower():
+			new_points = self.add_points(user)
+			self._outbound_messages.append('{} got it ({} total points)! Answer: {}'.format(user, new_points, self._current_ans))				
+			self._current_ans = None
+			self._timeout = None
+			
+	def parse(self, user, msg):
+		''' Get the incoming messages
+		'''	
+		# If there is already a question going
+		if self._current_ans == None and msg == '!trivia':
+			question = random.choice(self._questions)
+			self._outbound_messages.append(question['question'])
+			self._current_ans = question['answer']
+			self._timeout = datetime.now() + timedelta(seconds=30)
+			logging.debug("Adding question to queue: {}".format(question['question']))
+
+		if self._current_ans != None:
+			self.check_for_answer(user, msg)
+		if self._timeout != None and datetime.now() > self._timeout:
+			self._outbound_messages.append("Timed out. Answer: {}".format(self._current_ans))
+			self._current_ans = None
+			self._timeout = None
+
+	def get_outbound(self):
+		''' Return the outbound messages
+		'''
+		if self._timeout != None and datetime.now() > self._timeout:
+			self._outbound_messages.append("Timed out. Answer: {}".format(self._current_ans))
+			self._current_ans = None
+			self._timeout = None
+
+		r = list(self._outbound_messages)
+		self._outbound_messages = []
+		return r
+
+if __name__ == '__main__':
+	t = TriviaPlugin()
+		

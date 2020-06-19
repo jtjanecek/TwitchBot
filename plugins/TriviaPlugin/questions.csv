@@ -1,0 +1,273 @@
+Kind,Answer,Unit
+SHIELDS,20,Probe
+LIFE,20,Probe
+DAMAGE,5,Probe
+SHIELDS,50,Zealot
+LIFE,100,Zealot
+DAMAGE,8,Zealot
+ARMOR,1,Zealot
+SHIELDS,70,Adept
+LIFE,70,Adept
+ARMOR,1,Adept
+DAMAGE,10,Adept
+DAMAGE vs LIGHT,22,Adept
+ATTACK RANGE,4,Adept
+SHIELDS,40,Sentry
+LIFE,40,Sentry
+ARMOR,1,Sentry
+DAMAGE,6,Sentry
+ATTACK RANGE,5,Sentry
+SHIELDS,80,Stalker
+LIFE,80,Stalker
+ARMOR,1,Stalker
+DAMAGE,13,Stalker
+DAMAGE vs ARMORED,18,Stalker
+ATTACK RANGE,6,Stalker
+SHIELDS,80,Dark Templar
+LIFE,40,Dark Templar
+ARMOR,1,Dark Templar
+DAMAGE,45,Dark Templar
+SHIELDS,40,High Templar
+LIFE,40,High Templar
+ARMOR,0,High Templar
+DAMAGE,4,High Templar
+ATTACK RANGE,6,High Templar
+SHIELDS,350,Archon
+LIFE,10,Archon
+ARMOR,0,Archon
+DAMAGE,25,Archon
+DAMAGE vs BIO,35,Archon
+ATTACK RANGE,3,Archon
+SHIELDS,100,Warp Prism
+LIFE,80,Warp Prism
+ARMOR,0,Warp Prism
+SHIELDS,20,Observer
+LIFE,40,Observer
+ARMOR,0,Observer
+SHIELDS,100,Immortal
+LIFE,200,Immortal
+ARMOR,1,Immortal
+DAMAGE,20,Immortal
+DAMAGE vs ARMORED,50,Immortal
+ATTACK RANGE,6,Immortal
+SHIELDS,150,Colossus
+LIFE,200,Colossus
+ARMOR,1,Colossus
+DAMAGE,10,Colossus
+DAMAGE vs LIGHT,15,Colossus
+BASE ATTACK RANGE,7,Colossus
+UPGRADED ATTACK RANGE,9,Colossus
+SHIELDS,100,Disruptor
+LIFE,100,Disruptor
+ARMOR,1,Disruptor
+SHIELDS,60,Phoenix
+LIFE,120,Phoenix
+ARMOR,0,Phoenix
+DAMAGE,5,Phoenix
+DAMAGE vs LIGHT,10,Phoenix
+ATTACK RANGE,5,Phoenix
+UPGRADED ATTACK RANGE,7,Phoenix
+SHIELDS,100,Void Ray
+LIFE,150,Void Ray
+ARMOR,0,Void Ray
+DAMAGE,6,Void Ray
+DAMAGE vs ARMORED,10,Void Ray
+SHIELDS,60,Oracle
+LIFE,100,Oracle
+ARMOR,0,Oracle
+DAMAGE,15,Oracle
+DAMAGE vs ARMORED,22,Oracle
+SHIELDS,150,Carrier
+LIFE,300,Carrier
+ARMOR,2,Carrier
+DAMAGE,5,Carrier
+ATTACK RANGE,8,Carrier
+SHIELDS,100,Tempest
+LIFE,200,Tempest
+ARMOR,2,Tempest
+GROUND DAMAGE,40,Tempest
+AIR DAMAGE,30,Tempest
+AIR DAMAGE vs MASSIVE,52,Tempest
+AIR ATTACK RANGE,14,Tempest
+GROUND ATTACK RANGE,10,Tempest
+SHIELDS,40,Interceptor
+LIFE,40,Interceptor
+ARMOR,0,Interceptor
+DAMAGE,5,Interceptor
+ATTACK RANGE,2,Interceptor
+SHIELDS,350,Mothership
+LIFE,350,Mothership
+ARMOR,2,Mothership
+DAMAGE,6,Mothership
+ATTACK RANGE,7,Mothership
+SHIELDS,150,Photon Cannon
+LIFE,150,Photon Cannon
+ARMOR,1,Photon Cannon
+DAMAGE,20,Photon Cannon
+ATTACK RANGE,7,Photon Cannon
+LIFE,45,SCV
+ARMOR,0,SCV
+DAMAGE,5,SCV
+LIFE,60,Mule
+ARMOR,0,Mule
+LIFE,45,Marine
+ARMOR,0,Marine
+DAMAGE,6,Marine
+ATTACK RANGE,5,Marine
+LIFE,60,Reaper
+ARMOR,0,Reaper
+DAMAGE,4,Reaper
+ATTACK RANGE,5,Reaper
+LIFE,125,Marauder
+ARMOR,1,Marauder
+DAMAGE,10,Marauder
+DAMAGE vs ARMORED,20,Marauder
+ATTACK RANGE,6,Marauder
+,,
+LIFE,100,Ghost
+ARMOR,0,Ghost
+DAMAGE,10,Ghost
+DAMAGE vs LIGHT,20,Ghost
+ATTACK RANGE,6,Ghost
+,,
+LIFE,90,Hellion
+ARMOR,0,Hellion
+DAMAGE,8,Hellion
+DAMAGE vs LIGHT,14,Hellion
+ATTACK RANGE,5,Hellion
+,,
+LIFE,135,Hellbat
+ARMOR,0,Hellbat
+DAMAGE,18,Hellbat
+ATTACK RANGE,2,Hellbat
+,,
+LIFE,90,Widow Mine
+ARMOR,0,Widow Mine
+,,
+LIFE,175,Siege Tank
+ARMOR,1,Siege Tank
+SIEGED DAMAGE,40,Siege Tank
+SIEGED DAMAGE vs ARMORED,70,Siege Tank
+UNSIEGED DAMAGE,15,Siege Tank
+UNSIEGED DAMAGE vs ARMORED,25,Siege Tank
+ATTACK RANGE UNSIEGED,7,Siege Tank
+ATTACK RANGE SIEGED,13,Siege Tank
+,,
+LIFE,400,Thor
+ARMOR,1,Thor
+GROUND DAMAGE,30,Thor
+GROUND ATTACK RANGE,7,Thor
+AIR DAMAGE - JAVELIN MISSILE,6,Thor
+AIR DAMAGE - JAVELIN MISSILE vs LIGHT,12,Thor
+AIR ATTACK RANGE - JAVELIN MISSILE,10,Thor
+AIR DAMAGE - PUNISHER CANNONS,25,Thor
+AIR DAMAGE - PUNISHER CANNONS vs MASSIVE,35,Thor
+AIR ATTACK RANGE - PUNISHER CANNONS,11,Thor
+,,
+LIFE,135,Viking
+ARMOR,0,Viking
+GROUND DAMAGE,12,Viking
+GROUND DAMAGE vs MECHANICAL,20,Viking
+GROUND ATTACK RANGE,6,Viking
+AIR DAMAGE,10,Viking
+AIR DAMAGE vs ARMORED,14,Viking
+AIR ATTACK RANGE,9,Viking
+,,
+LIFE,150,Medivac
+ARMOR,1,Medivac
+,,
+LIFE,180,Liberator
+ARMOR,0,Liberator
+AIR ATTACK DAMAGE,5,Liberator
+GROUND ATTACK DAMAGE,75,Liberator
+AIR ATTACK RANGE,5,Liberator
+GROUND ATTACK RANGE,10,Liberator
+,,
+LIFE,140,Raven
+ARMOR,1,Raven
+,,
+LIFE,550,Battlecruiser
+ARMOR,3,Battlecruiser
+AIR ATTACK DAMAGE,5,Battlecruiser
+GROUND ATTACK DAMAGE,8,Battlecruiser
+AIR ATTACK RANGE,6,Battlecruiser
+GROUND ATTACK RANGE,6,Battlecruiser
+,,
+LIFE,140,Banshee
+ARMOR,0,Banshee
+DAMAGE,12,Banshee
+ATTACK RANGE,6,Banshee
+,,
+LIFE,40,Drone
+ARMOR,0,Drone
+DAMAGE,5,Drone
+,,
+LIFE,35,Zergling
+ARMOR,0,Zergling
+DAMAGE,5,Zergling
+,,
+LIFE,30,Baneling
+ARMOR,0,Baneling
+DAMAGE,18,Baneling
+DAMAGE vs LIGHT,35,Baneling
+,,
+LIFE,500,Ultralisk
+ARMOR,2,Ultralisk
+DAMAGE,35,Ultralisk
+ATTACK RANGE,1,Ultralisk
+,,
+LIFE,25,Larva
+ARMOR,10,Larva
+LIFE,145,Roach
+ARMOR,1,Roach
+DAMAGE,16,Roach
+ATTACK RANGE,4,Roach
+LIFE,120,Ravager
+ARMOR,1,Ravager
+DAMAGE,16,Ravager
+ATTACK RANGE,6,Ravager
+LIFE,90,Hydralisk
+ARMOR,0,Hydralisk
+DAMAGE,12,Hydralisk
+ATTACK RANGE,5,Hydralisk
+LIFE,200,Lurker
+ARMOR,1,Lurker
+DAMAGE,20,Lurker
+DAMAGE vs ARMORED,30,Lurker
+ATTACK RANGE,8,Lurker
+LIFE,150,Viper
+ARMOR,1,Viper
+LIFE,120,Mutalisk
+ARMOR,0,Mutalisk
+DAMAGE,9,Mutalisk
+LIFE,200,Corruptor
+ARMOR,2,Corruptor
+DAMAGE,14,Corruptor
+DAMAGE vs MASSIVE,20,Corruptor
+LIFE,160,Swarm Host
+ARMOR,1,Swarm Host
+LIFE,50,Locust
+ARMOR,0,Locust
+DAMAGE,10,Locust
+ATTACK RANGE,3,Locust
+LIFE,90,Infestor
+ARMOR,0,Infestor
+LIFE,225,Brood Lord
+ARMOR,1,Brood Lord
+DAMAGE,20,Brood Lord
+ATTACK RANGE,10,Brood Lord
+LIFE,30,Broodling
+ARMOR,0,Broodling
+DAMAGE,4,Broodling
+LIFE,200,Overlord
+ARMOR,0,Overlord
+LIFE,200,Overseer
+ARMOR,1,Overseer
+LIFE,175,Queen
+ARMOR,1,Queen
+AIR ATTACK DAMAGE,9,Queen
+AIR ATTACK RANGE,7,Queen
+GROUND ATTACK DAMAGE,4,Queen
+GROUND ATTACK RANGE,5,Queen
+LIFE,5,Changeling
+ARMOR,0,Changeling

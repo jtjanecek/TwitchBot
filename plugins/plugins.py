@@ -1,5 +1,4 @@
 from TriviaPlugin import TriviaPlugin
-from ExamplePlugin import ExamplePlugin
 import os
 import sys
 
